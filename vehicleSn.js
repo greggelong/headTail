@@ -11,7 +11,7 @@ class Vehicle {
       this.c = c
       this.speed = s//random(1,5);
       this.body = []
-      this.sl = 211
+      this.sl = 111
       for(let i = 0; i<this.sl; i++){
         this.body.push(this.pos.copy())
       }
