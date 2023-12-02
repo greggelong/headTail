@@ -1,0 +1,2 @@
+#  seek 
+In this sketch, two Braitenberg vehicles traverse a canvas. The green (or teal) vehicle explores non-aggressively, embodying curiosity and a quest for the unknown. Simultaneously, the brown vehicle pursues the green one, symbolizing the perpetual chase to capture elusive ideas. Their paths intertwine like a short dance until their with their tails.
