@@ -3,6 +3,8 @@ let greg
 let art
 let unseen 
 let clrs
+let lasttouch =0;
+let touching = false;
 
 function setup() {
   // put setup code here
@@ -24,11 +26,27 @@ function setup() {
 
 function draw() {
   background(clrs[0])
-  if (frameCount%300 ==0) unseen = createVector(random(width),random(height))
+  // 
+  //zero out the touch after 450 frames
+  if (frameCount%450==0 && touching) {
+    touching = false
+  }
+  if (frameCount%300 ==0 && !touching){
+    unseen = createVector(random(width),random(height))
+
+  } else if (frameCount%300!=0 && touching){
+    unseen = createVector(mouseX,mouseY)
+  }
   // put drawing code here
   let seekArt = p5.Vector.sub(art.pos,greg.pos)
   let seekMyst = p5.Vector.sub(unseen,art.pos)
   let seekGreg = p5.Vector.sub(greg.pos,art.pos)
+  // print circle for touch
+  if (touching){
+    fill(255,0,0,20)
+    noStroke()
+    ellipse(mouseX,mouseY,50,50)
+  }
   seekGreg.setMag(0.1);
   seekArt.setMag(0.1)
   seekMyst.setMag(0.1)
@@ -40,8 +58,20 @@ function draw() {
   art.edges()
   greg.show()
   art.show()
+  
 
 }
+
+function touchStarted() {
+  // for Ios
+  // calculate time since last touch
+   touching = true;
+}
+
+function mousePressed() {
+  touchStarted();
+}
+
 
 
 
